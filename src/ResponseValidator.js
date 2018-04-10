@@ -339,6 +339,10 @@ export default class ResponseValidator {
     _validateAccessToken(response) {
         Log.debug("ResponseValidator._validateAccessToken");
 
+        if(!this._settings.validateAccessToken) {
+            return Promise.resolve(response);
+        }
+
         if (!response.profile) {
             Log.error("No profile loaded from id_token");
             return Promise.reject(new Error("No profile loaded from id_token"));
