@@ -25,6 +25,7 @@ export default class OidcClientSettings {
         // behavior flags
         filterProtocolClaims = true, loadUserInfo = true,
         staleStateAge = DefaultStaleStateAge, clockSkew = DefaultClockSkewInSeconds,
+        validateAccessToken = true,
         // other behavior
         stateStore = new WebStorageStateStore(),
         ResponseValidatorCtor = ResponseValidator,
@@ -56,6 +57,7 @@ export default class OidcClientSettings {
         this._loadUserInfo = !!loadUserInfo;
         this._staleStateAge = staleStateAge;
         this._clockSkew = clockSkew;
+        this._validateAccessToken = validateAccessToken;
 
         this._stateStore = stateStore;
         this._validator = new ResponseValidatorCtor(this);
@@ -172,6 +174,10 @@ export default class OidcClientSettings {
     }
     get clockSkew() {
         return this._clockSkew;
+    }
+
+    get validateAccessToken() {
+        return this._validateAccessToken;
     }
 
     get stateStore() {

@@ -134,6 +134,7 @@ export interface OidcClientSettings {
   readonly staleStateAge?: number;
   readonly clockSkew?: number;
   readonly stateStore?: StateStore;
+  validateAccessToken: boolean;
   ResponseValidatorCtor?: ResponseValidatorCtor;
   MetadataServiceCtor?: MetadataServiceCtor;
   extraQueryParams?: {};
